@@ -18,8 +18,8 @@ exports.start = function(dbConfig)
 	    console.log('Couchbase Connected');
  	});
 
- 	var routes = require('./routes', db);
- 	var socket = require('./socket.js', db);
+ 	var routes = require('./server/routes', db);
+ 	var socket = require('./server/socket.js', db);
 
 	var app = module.exports = express();
 	var server = require('http').createServer(app);
@@ -28,7 +28,7 @@ exports.start = function(dbConfig)
 	var io = require('socket.io').listen(server);
 
 	// Configuration
-	app.set('views', __dirname + '/views');
+	app.set('views', __dirname + '/server/views');
 	app.set('view engine', 'jade');
 	app.set('view options', {
 		layout: false
