@@ -1,8 +1,10 @@
 // set up ======================================================================
-var couchbase = require('couchbase'); 					// couchnode for couchbase
-var port  	  = process.env.PORT || 8080; 				// set the port
-var morgan    = require('morgan'),
-var express = require('express'),
+var couchbase 	= require('couchbase'); 					// couchnode for couchbase
+var port  	  	= process.env.PORT || 8080; 				// set the port
+var morgan    	= require('morgan');
+var express 	= require('express');
+var bodyParser 	= require('body-parser');
+var methodOverride = require('method-override');
 
 exports.start = function(dbConfig)
 {
@@ -16,35 +18,28 @@ exports.start = function(dbConfig)
 	    console.log('Couchbase Connected');
  	});
 
- 	var routes = require('./server/routes', db);
- 	var socket = require('./server/socket.js', db);
+ 	var routes = require('./routes', db);
+ 	var socket = require('./socket.js', db);
 
-	var app = module.exports = express.createServer();
+	var app = module.exports = express();
+	var server = require('http').createServer(app);
 
 	// Hook Socket.io into Express
-	var io = require('socket.io').listen(app);
+	var io = require('socket.io').listen(server);
 
 	// Configuration
-	app.configure(function(){
-	  app.set('views', __dirname + '/server/views');
-	  app.set('view engine', 'jade');
-	  app.set('view options', {
-	    layout: false
-	  });
-	  app.use(express.bodyParser());
-	  app.use(express.methodOverride());
-	  app.use(express.static(__dirname + '/public'));
-	  app.use(app.router);
+	app.set('views', __dirname + '/views');
+	app.set('view engine', 'jade');
+	app.set('view options', {
+		layout: false
 	});
-
-	app.configure('development', function(){
-	  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-	});
-
-	app.configure('production', function(){
-	  app.use(express.errorHandler());
-	});
-
+	app.use(morgan('dev'));
+	app.use(bodyParser.urlencoded({'extended':'true'})); // parse application/x-www-form-urlencoded
+	app.use(bodyParser.json()); // parse application/json
+	app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
+	app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-Method-Override header in the request
+	app.use(express.static(__dirname + '/public'));
+	
 	// Routes
 	app.get('/', routes.index);
 	app.get('/partials/:name', routes.partials);
@@ -56,12 +51,8 @@ exports.start = function(dbConfig)
 	io.sockets.on('connection', socket);
 
 	// Start server
-	app.listen(3000, function(){
-	  console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+	server.listen(3000, function(){
+	  console.log("Express server listening on port %d", server.address().port);
 	});
-
-	// listen (start app with node server.js) ======================================
-	app.listen(port);
-	console.log("App listening on port " + port);
 };
 
