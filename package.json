@@ -1,0 +1,14 @@
+{
+  "name"         : "BeerSocketIOAngularNode",
+  "version"      : "0.0.1",
+  "description"  : "Simple app to show Beer, Socket.io, Angular and Node playing nicely together.",
+  "main"         : "server.js",
+  "author"       : "Matt Davies",
+  "dependencies" : {
+    "express"    : ">=2.5.10",
+    "jade"       : ">=0.26.1",
+    "socket.io"  : ">=1.0.6",
+    "couchbase"  : ">=2.0.0-beta",
+    "morgan"     : ">=1.2.3"
+  }
+}
