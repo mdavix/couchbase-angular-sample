@@ -1,28 +1,17 @@
 // set up ======================================================================
-var couchbase 	= require('couchbase'); 					// couchnode for couchbase
-var port  	  	= process.env.PORT || 8080; 				// set the port
 var morgan    	= require('morgan');
 var express 	= require('express');
 var bodyParser 	= require('body-parser');
 var methodOverride = require('method-override');
 
-exports.start = function(dbConfig)
+exports.start = function()
 {
 	// configuration ===============================================================
-	var db = new couchbase.Connection( dbConfig, function( err ) {
-	    if(err) {
-	      console.error("Failed to connect to cluster: " + err);
-	      process.exit(1);
-	    }
-
-	    console.log('Couchbase Connected');
- 	});
-
- 	var routes = require('./server/routes', db);
- 	var socket = require('./server/socket.js', db);
+ 	var routes = require('./server/routes');
+ 	var socket = require('./server/socket.js');
 
 	var app = module.exports = express();
-	var server = require('http').createServer(app);
+	var server = require('http').Server(app);
 
 	// Hook Socket.io into Express
 	var io = require('socket.io').listen(server);

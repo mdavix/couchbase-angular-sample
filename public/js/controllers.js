@@ -10,6 +10,7 @@ function AppCtrl($scope, socket) {
   socket.on('init', function (data) {
     $scope.name = data.name;
     $scope.users = data.users;
+    $scope.beers = data.beers;
   });
 
   socket.on('send:message', function (message) {

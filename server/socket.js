@@ -1,3 +1,6 @@
+var db = require('./db');
+var _  = require('underscore');
+
 // Keep track of which names are used so that there are no duplicates
 var userNames = (function () {
   var names = {};
@@ -49,14 +52,44 @@ var userNames = (function () {
 }());
 
 // export function for listening to the socket
-module.exports = function (socket, db) {
+module.exports = function (socket) {
   var name = userNames.getGuestName();
 
-  // send the new user their name and a list of users
-  socket.emit('init', {
-    name: name,
-    users: userNames.get()
-  });
+  function getBeers() {
+    var q = {
+      limit : 20,   // configure max number of entries.
+      stale : false               // We don't want stale views here.
+    };
+
+    db.view( "beer", "by_name", q).query(function(err, values) {
+      // 'by_name' view's map function emits beer-name as key and value as
+      // null. So values will be a list of
+      //      [ {id: <beer-id>, key: <beer-name>, value: <null>}, ... ]
+
+      // we will fetch all the beer documents based on its id.
+      var keys = _.pluck(values, 'id');
+
+      db.getMulti( keys, null, function(err, results) {
+
+        // Add the id to the document before sending to template
+        var beers = _.map(results, function(v, k) {
+          v.value.id = k;
+          return v.value;
+        });
+
+        console.log(beers);
+
+        // send the new user their name and a list of users
+        socket.emit('init', {
+          name: name,
+          users: userNames.get(),
+          beers: beers
+        });
+      })
+    });
+  };
+
+  getBeers();
 
   // notify other clients that a new user has joined
   socket.broadcast.emit('user:join', {

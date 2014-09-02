@@ -14,6 +14,11 @@ block body
       .overflowable
         p(ng-repeat='user in users') {{user}}
 
+    .col
+      h3 Beers
+      .overflowable
+        p(ng-repeat='beer in beers') {{beer.name}}
+
     .clr
       form(ng-submit='sendMessage()')
         | Message: 
