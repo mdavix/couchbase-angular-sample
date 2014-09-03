@@ -3,6 +3,15 @@ extends layout
 block body
   h1 Matt's Angular Socket.io Demo App
   div(ng-controller='AppCtrl')
+    h3 Beers
+    table
+      tr(ng-repeat='beer in beers') 
+        td {{beer.name}}
+        td {{beer.brewery_id}}
+        td 
+          form(ng-submit='editBeer({{beer.id}})')
+            input(type='submit', value='Edit')
+
     .col
       h3 Messages
       .overflowable
@@ -13,11 +22,6 @@ block body
       h3 Users
       .overflowable
         p(ng-repeat='user in users') {{user}}
-
-    .col
-      h3 Beers
-      .overflowable
-        p(ng-repeat='beer in beers') {{beer.name}}
 
     .clr
       form(ng-submit='sendMessage()')

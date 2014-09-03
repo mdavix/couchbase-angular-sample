@@ -98,4 +98,10 @@ function AppCtrl($scope, socket) {
     // clear message box
     $scope.message = '';
   };
+
+  $scope.editBeer = function (beer_id) {
+    socket.emit('edit:beer', {
+      beer_id: beer_id
+    });
+  };
 }
