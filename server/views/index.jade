@@ -9,24 +9,24 @@ block body
         td {{beer.name}}
         td {{beer.brewery_id}}
         td 
-          form(ng-submit='editBeer({{beer.id}})')
+          form(ng-submit='editBeer("{{beer.id}}")')
             input(type='submit', value='Edit')
-
+    h4 Speak to other beer app users:
     .col
-      h3 Messages
+      h3 Beer Messages
       .overflowable
         p(ng-repeat='message in messages',
           ng-class='{alert: message.user == "chatroom"}') {{message.user}}: {{message.text}}
 
     .col
-      h3 Users
+      h3 Beer Users
       .overflowable
         p(ng-repeat='user in users') {{user}}
 
     .clr
       form(ng-submit='sendMessage()')
         | Message: 
-        input(size='60', ng-model='message')
+        input(size='40', ng-model='message')
         input(type='submit', value='Send')
 
     .clr

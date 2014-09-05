@@ -1,7 +1,7 @@
 /* app css stylesheet */
 
 .overflowable {
-  height: 240px;
+  height: 140px;
   overflow-y: auto;
   border: 1px solid #000;
 }
@@ -12,7 +12,7 @@
 
 .col {
   float: left;
-  width: 350px;
+  width: 250px;
 }
 
 .clr {
