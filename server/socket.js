@@ -61,7 +61,7 @@ module.exports = function (socket) {
       stale : false               // We don't want stale views here.
     };
 
-    db.view( "beer", "by_name", q).query(function(err, values) {
+    db.view( "beer", "brewery_beers", q).query(function(err, values) {
       // 'by_name' view's map function emits beer-name as key and value as
       // null. So values will be a list of
       //      [ {id: <beer-id>, key: <beer-name>, value: <null>}, ... ]
