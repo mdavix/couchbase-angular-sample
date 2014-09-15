@@ -2,20 +2,21 @@ Matt's sample app using Couchbase and AngularJS
 
 To install do the following:
 
-   * Download & Install Couchbase beta2 (Make sure you follow the instructions for your OS... ;-))
-     * Ubuntu: http://packages.couchbase.com/releases/3.0.0-beta2/couchbase-server_3.0.0-beta2_x86_64_ubuntu_1204.deb
-     * OSX: http://packages.couchbase.com/releases/3.0.0-beta2/couchbase-server_3.0.0-beta2_x86_64.zip
+   * Install Ubuntu 14.04
 
-   * Ubuntu:
-      * Run “sudo apt-get install node”
-      * Run “sudo apt-get install npm”
-      * Run “npm install express”
-      * Run “sudo apt-get install git”
+   * Download http://packages.couchbase.com/releases/3.0.0-beta/couchbase-server_3.0.0-beta_x86_64_ubuntu_1204.deb
 
-   * OSX:
-      * Install HomeBrew (http://brew.sh/)
-      * Run "brew install node"
-      * Run "brew install npm"
+   * Run “sudo dpkg -i couchbase-server_3.0.0-beta_x86_64_ubuntu_1204.deb”
+
+   * Run “sudo wget -O/etc/apt/sources.list.d/couchbase.list http://packages.couchbase.com/ubuntu/couchbase-ubuntu1404.list"
+
+   * Run “sudo apt-get install node”
+
+   * Run “sudo apt-get install npm”
+
+   * Run “npm install express”
+
+   * Run “sudo apt-get install git”
 
    * Pull down the code “git clone https://github.com/scotch-io/node-todo.git”
 
