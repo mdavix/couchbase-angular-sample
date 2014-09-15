@@ -7,7 +7,7 @@ module.exports = function(config){
       'public/js/libs/angular/angular.js',
       'public/js/libs/angular-resource/angular-resource.js',
       'public/js/libs/angular-mocks/angular-mocks.js',
-      'public/js/**/*.js',
+      'public/js/*.js',
       'test/unit/**/*.js',
       'test/socket.io.js' //Only for testing purposes
     ],
