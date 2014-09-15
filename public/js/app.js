@@ -5,5 +5,6 @@
 var app = angular.module('myApp', [
     'myApp.controllers',
     'myApp.filters',
-    'myApp.directives'
+    'myApp.directives',
+    'myApp.services'
 ]);
