@@ -77,8 +77,6 @@ module.exports = function (socket) {
           return v.value;
         });
 
-        console.log(beers);
-
         // send the new user their name and a list of users
         socket.emit('init', {
           name: name,
