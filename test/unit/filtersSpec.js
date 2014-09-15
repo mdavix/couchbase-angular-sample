@@ -2,17 +2,25 @@
 
 /* jasmine specs for filters go here */
 
-describe('filter', function() {
+describe('Filters', function() {
 
-  beforeEach(module('phonecatFilters'));
+  beforeEach(module('myApp.filters'));
+  beforeEach(module(function($provide) {
+        $provide.factory('version', function() {
+            return 'SomeVersion';
+        });
+    }));
 
+  describe('Interpolate filter', function() {
 
-  describe('checkmark', function() {
+    it('should convert replace the VERSION keyword with the apropriate value',
+        inject(function(interpolateFilter) {
+      expect(interpolateFilter('T/%VERSION%')).toBe('T/SomeVersion');
+    }));
 
-    it('should convert boolean values to unicode checkmark or cross',
-        inject(function(checkmarkFilter) {
-      expect(checkmarkFilter(true)).toBe('\u2713');
-      expect(checkmarkFilter(false)).toBe('\u2718');
+    it('should not touch other strings',
+      inject(function(interpolateFilter) {
+          expect(interpolateFilter('T')).toBe('T');
     }));
   });
 });
