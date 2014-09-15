@@ -10,7 +10,7 @@
     "method-override" : "*",
     "jade"            : ">=0.26.1",
     "socket.io"       : ">=1.0.6",
-    "couchbase"       : ">=2.0.0-beta",
+    "couchbase"       : ">=2.0.0-dp1",
     "morgan"          : ">=1.2.3",
     "underscore"      : "*",
     "passport"        : "*"
