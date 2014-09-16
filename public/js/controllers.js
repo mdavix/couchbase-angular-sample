@@ -1,27 +1,27 @@
 'use strict';
 
-/* Controllers */
 angular.module('myApp.controllers', []).
-    controller('AppCtrl', ['$scope', 'socket', function($scope, socket) {
+controller('AppCtrl', ['$scope', 'socket',
+    function($scope, socket) {
 
         // Socket listeners
         // ================
 
-        socket.on('init', function (data) {
+        socket.on('init', function(data) {
             $scope.name = data.name;
             $scope.users = data.users;
             $scope.beers = data.beers;
         });
 
-        socket.on('send:message', function (message) {
+        socket.on('send:message', function(message) {
             $scope.messages.push(message);
         });
 
-        socket.on('change:name', function (data) {
+        socket.on('change:name', function(data) {
             changeName(data.oldName, data.newName);
         });
 
-        socket.on('user:join', function (data) {
+        socket.on('user:join', function(data) {
             $scope.messages.push({
                 user: 'chatroom',
                 text: 'User ' + data.name + ' has joined.'
@@ -30,7 +30,7 @@ angular.module('myApp.controllers', []).
         });
 
         // add a message to the conversation when a user disconnects or leaves the room
-        socket.on('user:left', function (data) {
+        socket.on('user:left', function(data) {
             $scope.messages.push({
                 user: 'chatroom',
                 text: 'User ' + data.name + ' has left.'
@@ -48,7 +48,7 @@ angular.module('myApp.controllers', []).
         // Private helpers
         // ===============
 
-        var changeName = function (oldName, newName) {
+        var changeName = function(oldName, newName) {
             // rename user in list of users
             var i;
             for (i = 0; i < $scope.users.length; i++) {
@@ -61,15 +61,15 @@ angular.module('myApp.controllers', []).
                 user: 'chatroom',
                 text: 'User ' + oldName + ' is now known as ' + newName + '.'
             });
-        }
+        };
 
         // Methods published to the scope
         // ==============================
 
-        $scope.changeName = function () {
+        $scope.changeName = function() {
             socket.emit('change:name', {
                 name: $scope.newName
-            }, function (result) {
+            }, function(result) {
                 if (!result) {
                     alert('There was an error changing your name');
                 } else {
@@ -84,7 +84,7 @@ angular.module('myApp.controllers', []).
 
         $scope.messages = [];
 
-        $scope.sendMessage = function () {
+        $scope.sendMessage = function() {
             socket.emit('send:message', {
                 message: $scope.message
             });
@@ -99,9 +99,10 @@ angular.module('myApp.controllers', []).
             $scope.message = '';
         };
 
-        $scope.editBeer = function (beer_id) {
+        $scope.editBeer = function(beer_id) {
             socket.emit('edit:beer', {
                 beer_id: beer_id
             });
         };
-    }]);
+    }
+]);
