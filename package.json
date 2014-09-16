@@ -21,6 +21,8 @@
         "karma-chrome-launcher": "^0.1.4",
         "karma-jasmine": "^0.1.5",
         "protractor": "~1.0.0",
+        "phantomjs": "^1.9.7",
+        "casperjs": "~1.1.0",
         "socket.io": ">=1.0.6",
         "mockery": "^1.4.0"
     },
@@ -38,6 +40,9 @@
         "update-webdriver": "webdriver-manager update",
 
         "preprotractor": "npm run update-webdriver",
-        "protractor": "protractor test/protractor-conf.js"
+        "protractor": "protractor test/protractor-conf.js",
+
+        "precasper": "npm install",
+        "casper": "PATH=$PATH:./node_modules/phantomjs/bin/ python  ./node_modules/casperjs/bin/casperjs test ./test/e2e/casper-scenarios.js"
     }
 }
