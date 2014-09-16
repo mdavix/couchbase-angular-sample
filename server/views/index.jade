@@ -25,7 +25,7 @@ block body
             form(ng-submit='sendMessage()')
                 | Message:
                 input(size='40', ng-model='message')
-                input(type='submit', value='Send')
+                input#sendmsg(type='submit', value='Send')
 
         .clr
             h3 Change your name
