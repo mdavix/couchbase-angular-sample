@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/julianghionoiu/couchbase-angular-sample.svg?branch=master)](https://travis-ci.org/julianghionoiu/couchbase-angular-sample)
+[![Dependency Status](https://gemnasium.com/julianghionoiu/couchbase-angular-sample.svg)](https://gemnasium.com/julianghionoiu/couchbase-angular-sample)
 
 Matt's sample app using Couchbase and AngularJS
 
