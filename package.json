@@ -48,12 +48,9 @@
         "karma": "node node_modules/karma/bin/karma start test/karma.conf.js",
 
         "update-webdriver": "webdriver-manager update",
-        "preprotractor": "npm run update-webdriver && npm start",
+        "preprotractor": "npm run update-webdriver",
         "protractor": "protractor test/protractor-conf.js",
-        "postprotractor": "npm stop",
 
-        "precasper": "npm start",
-        "casper": "PATH=$PATH:./node_modules/phantomjs/bin/ python  ./node_modules/casperjs/bin/casperjs test ./test/e2e/casper-scenarios.js",
-        "postcasper": "npm stop"
+        "casper": "PATH=$PATH:./node_modules/phantomjs/bin/ python  ./node_modules/casperjs/bin/casperjs test ./test/e2e/casper-scenarios.js"
     }
 }
