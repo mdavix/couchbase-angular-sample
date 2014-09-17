@@ -4,6 +4,9 @@
     "description": "Simple app to show Beer, Socket.io, Angular and Node playing nicely together.",
     "main": "server.js",
     "author": "Matt Davies",
+    "contributors": [
+        "Iulian (Julian) Ghionoiu <iulian.ghionoiu@gmail.com>"
+    ],
     "dependencies": {
         "start-stop-daemon": "0.1.0",
         "express": ">=2.5.10",
@@ -11,13 +14,14 @@
         "method-override": "*",
         "jade": ">=0.26.1",
         "socket.io": ">=1.0.6",
-        "couchbase": ">=2.0.0-beta",
+        "couchbase": "2.0.0-dp1",
         "morgan": ">=1.2.3",
         "underscore": "*",
         "passport": "*"
     },
     "devDependencies": {
         "bower": "^1.3.1",
+        "nodeunit": "^0.9.0",
         "karma": "^0.12.16",
         "karma-jasmine": "^0.1.5",
         "karma-phantomjs-launcher": "^0.1.4",
@@ -42,7 +46,6 @@
 
         "nodeunit": "node node_modules/nodeunit/bin/nodeunit ./test/node",
         "karma": "node node_modules/karma/bin/karma start test/karma.conf.js",
-
 
         "update-webdriver": "webdriver-manager update",
         "preprotractor": "npm run update-webdriver && npm start",
