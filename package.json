@@ -5,6 +5,7 @@
     "main": "server.js",
     "author": "Matt Davies",
     "dependencies": {
+        "start-stop-daemon": "0.1.0",
         "express": ">=2.5.10",
         "body-parser": "*",
         "method-override": "*",
@@ -30,7 +31,8 @@
         "postinstall": "bower install",
 
         "prestart": "npm install",
-        "start": "node server.js",
+        "start": "node server.js start",
+        "stop": "node server.js stop",
 
         "pretest": "npm install",
         "test": "node node_modules/karma/bin/karma start test/karma.conf.js",
@@ -39,10 +41,12 @@
         "preupdate-webdriver": "npm install",
         "update-webdriver": "webdriver-manager update",
 
-        "preprotractor": "npm run update-webdriver",
+        "preprotractor": "npm run update-webdriver && npm start",
         "protractor": "protractor test/protractor-conf.js",
+        "postprotractor": "npm stop",
 
-        "precasper": "npm install",
-        "casper": "PATH=$PATH:./node_modules/phantomjs/bin/ python  ./node_modules/casperjs/bin/casperjs test ./test/e2e/casper-scenarios.js"
+        "precasper": "npm start",
+        "casper": "PATH=$PATH:./node_modules/phantomjs/bin/ python  ./node_modules/casperjs/bin/casperjs test ./test/e2e/casper-scenarios.js",
+        "postcasper": "npm stop"
     }
 }
