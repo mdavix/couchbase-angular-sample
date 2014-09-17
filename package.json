@@ -5,7 +5,7 @@
     "main": "server.js",
     "author": "Matt Davies",
     "contributors": [
-        "Iulian (Julian) Ghionoiu <iulian.ghionoiu@gmail.com>"
+        "Julian Ghionoiu <julian.ghionoiu@valtech.co.uk>"
     ],
     "dependencies": {
         "start-stop-daemon": "0.1.0",
