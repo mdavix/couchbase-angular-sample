@@ -39,7 +39,7 @@
         "stop": "node server.js stop",
 
         "pretest": "npm install",
-        "test": "npm run unit-test && npm run functional-test",
+        "test": "npm run unit-test",
 
         "unit-test": "npm run nodeunit && npm run karma",
         "functional-test": "npm run casper && npm run protractor",
