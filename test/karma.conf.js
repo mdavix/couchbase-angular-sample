@@ -12,16 +12,23 @@ module.exports = function(config){
       'test/socket.io.js' //Only for testing purposes
     ],
 
+    preprocessors: {
+      // (these files will be instrumented by Istanbul)
+      'public/js/*.js': ['coverage']
+    },
+
     autoWatch : true,
+    singleRun: true,
+
 
     frameworks: ['jasmine'],
 
-    browsers : ['Chrome'],
+    browsers : ['PhantomJS'],
 
     plugins : [
-            'karma-chrome-launcher',
-            'karma-firefox-launcher',
-            'karma-jasmine'
+            'karma-phantomjs-launcher',
+            'karma-jasmine',
+            'karma-coverage'
             ],
 
     junitReporter : {

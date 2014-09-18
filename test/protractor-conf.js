@@ -2,14 +2,12 @@ exports.config = {
   allScriptsTimeout: 11000,
 
   specs: [
-    'e2e/*.js'
+    'e2e/protractor-*.js'
   ],
 
   capabilities: {
-    'browserName': 'chrome'
+    'browserName': 'phantomjs'
   },
-
-  chromeOnly: true,
 
   baseUrl: 'http://localhost:3000/',
 

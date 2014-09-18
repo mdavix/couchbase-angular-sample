@@ -4,7 +4,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
-exports.start = function() {
+exports.start = function(config, errorCallback) {
     // configuration ===============================================================
     var routes = require('./server/routes');
     var socket = require('./server/socket.js');
