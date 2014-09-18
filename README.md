@@ -12,28 +12,30 @@ To install do the following:
    * Ubuntu:
       * Run “sudo apt-get install node”
       * Run “sudo apt-get install npm”
-      * Run “npm install express”
-      * Run “sudo apt-get install git”
+      * Run “npm install”
 
    * OSX:
       * Install HomeBrew (http://brew.sh/)
       * Run "brew install node"
       * Run "brew install npm"
 
-   * Pull down the code “git clone https://github.com/scotch-io/node-todo.git”
 
-   * Install couchbase SDK 2.0 “npm install https://registry.npmjs.org/couchbase/-/couchbase-2.0.0-beta.tgz”
+   * Pull down the code from this repository
+   * Run "npm install"
+   
+   * Ensure the Couchbase database is started
+   * Run the unit tests with "npm test"
+   
+   * Start the application with npm start
+   * Browse to http://127.0.0.1:3000 to view the app
+   * Run the functional tests with "npm run function-test"
+
+   * To stop the service run "npm stop"
+
+Issues on Ubuntu:
 
    * Resolve Ununtu node clash “sudo update-alternatives --install /usr/bin/node node /usr/bin/nodejs 10” - Not working properly - Had to recompile the couch base client with nodes rather than node in binding.gyp
 
-   * Fell back to normal client
-   
-   * Run “npm install -g nodemon"
-
-   * Run “nodemon server.js" to get the app running
-
-   * Browse to http://127.0.0.1:3000 to view the app
-
-Note: Only ever do “sudo node rebuild”
+   Note: Only ever do “sudo node rebuild”
 
 Enjoy! :-)
