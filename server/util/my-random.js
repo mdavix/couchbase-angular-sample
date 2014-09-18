@@ -4,7 +4,8 @@
 
 /**
  * A basic utility that offsets a number by
- * @param num
+ * @param  {number} low
+ * @param  {number} high
  * @returns {number}
  */
 exports.generate = function random (low, high) {

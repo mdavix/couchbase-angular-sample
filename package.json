@@ -25,6 +25,7 @@
         "karma": "^0.12.16",
         "karma-jasmine": "^0.1.5",
         "karma-phantomjs-launcher": "^0.1.4",
+        "karma-coverage": "^0.1.1",
         "protractor": "~1.0.0",
         "phantomjs": "^1.9.7",
         "casperjs": "~1.1.0",
